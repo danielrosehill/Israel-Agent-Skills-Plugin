@@ -23,6 +23,7 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 | Skill | What it does |
 |---|---|
 | **`add-skill-to-plugin`** | Add a new skill to this plugin from rough / raw notes pasted into chat — scaffolds `skills/<name>/SKILL.md`, syncs the local plugin cache, commits, and pushes |
+| **`update-plugin-readme`** | Refresh the README's Skills section from the current `skills/*/SKILL.md` inventory — reads each skill's frontmatter, groups by category, and rewrites the table between `<!-- SKILLS:START -->` / `<!-- SKILLS:END -->` markers |
 <!-- SKILLS:END -->
 
 ## Related plugins
