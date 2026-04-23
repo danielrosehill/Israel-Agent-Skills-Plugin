@@ -1,140 +1,110 @@
 ---
 name: israel-post-appointment
-description: Use when the user wants to book an appointment at an Israel Post branch (דואר ישראל, doar) — e.g. for passport collection, oversized package pickup, bank services, or anything requiring a scheduled slot at a specific sniff-haDoar. Locates the right branch, identifies its Qnomy queuing-system id (qnomycode) — Israel Post uses Qnomy (central.qnomy.com) as the appointment backend — and drives the booking flow via a visible Playwright browser for the user-facing steps that need captcha / SMS OTP. Includes a bundled fallback `data/branches.json` with all 1,524 branches (id, branchnumber, name, qnomycode, address, city, lat/lon, type) captured directly from the CDN endpoint the site uses, so branch lookup works even if the live API is temporarily broken. Trigger phrases: "book a post office appointment", "schedule an appointment at doar", "kavia tor b-doar", "book a slot to pick up my passport at the post office", "find the Qnomy code for post office X", "which post office branches accept appointments", "post office in [city] with appointments".
+description: Use when the user wants to check the next available appointment, book an appointment, or cancel an appointment at an Israel Post branch (דואר ישראל, doar) — e.g. for package pickup (מסירת דואר ללקוח), general counter service (אשנב כל), foreign currency (מטבע חוץ), or vehicle ownership transfer (העברת בעלות רכב). Resolves the target branch by name / city / address against a bundled dataset of 314 booking-capable branches (each with its `branchnumber`), constructs the direct booking URL, and drives the headless Playwright flow. The booking flow requires only a mobile phone number entered twice — no ID (teudat zehut), no SMS OTP, no captcha, no login. Trigger phrases - "book a post office appointment", "kavia tor b-doar", "schedule appointment at doar", "check next post office slot", "is there a post office appointment today", "post office near me with appointments", "cancel my post office appointment", "find the branch number for [post office name]".
 ---
 
-# Israel Post Appointment Booking
+# Israel Post Appointment
 
-Helps the user find an Israel Post branch that supports appointment booking and drives the booking flow. Uses the same Qnomy backend (`central.qnomy.com`) that Israel Post's web app talks to.
+Three sub-flows:
 
-## Data model — what identifies a branch
+- **check-next** — report earliest available slot for (branch, service). Read-only.
+- **book** — book at earliest slot or a user-specified slot; returns confirmation details.
+- **cancel** — cancel a just-booked appointment (from the same session).
 
-Israel Post uses three overlapping identifiers; don't confuse them:
+## Surprising facts (confirmed by capture)
 
-| Field | Source | Used for | Example |
-|---|---|---|---|
-| `id` | Internal DB | Cross-referencing inside the Israel Post site | `8` |
-| `branchnumber` | Public-facing branch number | Shown in the UI, printed on signage | `3` |
-| `qnomycode` | Qnomy queuing system id | **This is the one appointments are booked against.** `0` / null means the branch does NOT offer appointments | `86` |
+- **No ID / teudat zehut required.** Only a mobile phone number.
+- **No SMS OTP.** Phone is trust-on-first-use; identification happens physically at the branch's queue terminal by typing the phone.
+- **No captcha, no login.** Fully anonymous flow.
+- **Headless Chromium works** end-to-end despite Reblaze-style anti-bot on the page; no stealth plugin required.
 
-**Only branches with a non-zero `qnomycode` accept appointments.** Of the 1,524 branches in the dataset, roughly 324 have a `qnomycode`. The rest are post-delivery-only (מסירת דואר בלבד), mobile post (דואר נע), community secretariats (מזכירות יישוב), etc.
+## Branch lookup (`data/branches.json`)
 
-## Primary data source (API-first)
+Bundled dataset of **314 booking-capable branches** (Israel Post has ~1,524 branches total; only those with counter-appointment support are shipped here).
 
-The official site loads its full branch list from this static CDN endpoint, unauthenticated:
+Each branch has: `branchnumber`, `branchname`, `branchtypename`, `city`, `street`, `house`, `zip`, `area`, `region`, `telephone`, `geocode_latitude`, `geocode_longitude`, `ExtraServices`.
 
-```
-https://mypostvouchars-prd.azureedge.net/branches/branches.json
-```
+Lookup pattern:
+1. Filter `branches` by `city` + fuzzy match on `branchname` / `street`.
+2. Confirm the match with the user (show full name + address).
+3. Use the matched branch's `branchnumber` to construct the booking URL.
 
-Response is `{ ReturnCode, ErrorMessage, Result: [ ... 1524 branches ... ] }`. Each branch has the fields listed above plus hours, accessibility, services, and geocoordinates.
+Do NOT ask the user for the branch number — resolve it from the name or address.
 
-**Always try this endpoint first.** Plain `curl` works — no browser, no captcha, no session. If it succeeds, skip the rest of the lookup ladder.
+## Booking URL
 
-Per-branch detail (services, hold-times, free slots) is fetched from:
-
-```
-https://central.qnomy.com/CentralAPI/...
-```
-
-The exact path is discovered via the network-capture flow in `Local-Web-Capture:scrape-web-page` — do that once and record under `sites.yaml` → `central.qnomy.com`.
-
-## Fallback data source — bundled `data/branches.json`
-
-If the CDN endpoint is unreachable (outage, network issue, IP geoblock from outside Israel), fall back to the bundled snapshot at `data/branches.json` inside this skill's directory. Shape:
-
-```json
-{
-  "source": "https://mypostvouchars-prd.azureedge.net/branches/branches.json",
-  "captured_at": "2026-04-23",
-  "count": 1524,
-  "branches": [
-    {
-      "id": 8,
-      "branchnumber": 3,
-      "name": "מרכזי ירושלים",
-      "qnomycode": 86,
-      "branchtype": "סניף",
-      "city": "ירושלים",
-      "street": "...",
-      "house": 23,
-      "zip": "...",
-      "telephone": null,
-      "lat": 31.78,
-      "lon": 35.22
-    }
-  ]
-}
-```
-
-The snapshot is captured-at stamped — warn the user it may be stale if the live endpoint failed and the snapshot is older than ~3 months. Offer to re-capture (see "Refreshing the snapshot" below).
-
-## Entry points for the user
-
-Two canonical flows:
-
-1. **"Book an appointment at post office X"** — user names the branch. Look it up by name (fuzzy Hebrew match) in the dataset. Confirm the match (show name + full address). Confirm the branch has a `qnomycode`. Proceed to booking.
-2. **"Book an appointment at a post office near me in Y"** — user names a city or area. Filter the dataset by `city` or by distance from a lat/lon if they give an address. Show only branches with `qnomycode`. User picks one. Proceed to booking.
-
-Don't ask the user for the branch id or qnomycode — resolve it from the name.
-
-## Booking flow (UI-driven)
-
-The booking UI is at (as of 2026-04-23 — verify before use):
+The URL-encoded template is bundled in `data/branches.json` under `booking_url_template`. Substitute `{branchnumber}` with the target branch's `branchnumber` field. Example:
 
 ```
-https://doar.israelpost.co.il/locatebranch
+https://israelpost.co.il/{encoded-hebrew-path}?no=101
 ```
 
-…with a per-branch deep-link into the Qnomy appointment picker. Discover the deep-link pattern via `scrape-web-page` in `network` mode once and record it.
+## Service selection
 
-The booking flow requires:
+Four service types are exposed as buttons on the picker page:
 
-- **Service selection** — the user must pick the specific service (passport, oversized package, etc.). The list is per-branch and per-qnomycode. Fetched from Qnomy.
-- **Date/time slot** — Qnomy returns available slots; user picks.
-- **Personal details** — name, Israeli ID number (`teudat zehut`), phone number.
-- **SMS OTP** — Israel Post sends an SMS code to confirm. The skill must pause and let the user paste the code.
-- **Possibly a reCAPTCHA.** Use a **visible** Playwright browser — do not try to solve.
+| Service key | Hebrew label | Notes |
+|---|---|---|
+| `general` | אשנב כל | General counter, up to 10 slips per appointment |
+| `forex` | מטבע חוץ | Foreign currency |
+| `package_pickup` | מסירת דואר ללקוח | Package / mail pickup — the most common |
+| `vehicle_transfer` | העברת בעלות רכב | Vehicle ownership transfer |
 
-Never submit a booking without showing the user the full summary (branch, service, date/time, personal details) and getting an explicit "confirm".
+Not every branch offers every service — the buttons render per branch.
 
-## Refreshing the snapshot
+## Flow (driven in headless Playwright)
 
-To refresh `data/branches.json`:
+1. `goto` the booking URL with `?no={branchnumber}`.
+2. Dismiss cookie overlay if present — `role=button[name="סגירה"]` (visible text `הבנתי`).
+3. Click the service button by Hebrew label (class `.LeadAppt-services-item`).
+4. Date/time picker renders:
+   - Day tabs — only days with availability appear (e.g. "ראשון 26").
+   - Daypart tabs — `#LeadAppt-datepick-time-dayparts button[data-for="noon"]` and `button[data-for="afterNoon"]`. The `.active` one is currently shown; the default is the afternoon tab if it has slots.
+   - Slot buttons — 3-minute intervals, labeled `HH:MM`, inside the active daypart only.
+5. Select day tab → daypart tab → slot button.
+6. Click continue — `#LeadAppt-datepick-btn-next` (fires `LeadApptSubmit()`).
+7. Phone form:
+   - Primary input: `#leadmobile`
+   - Confirm: `role=textbox[name="*הקלדה חוזרת של מספר טלפון סלולארי"]`
+   - Both required; must match.
+8. Click continue.
+9. Confirmation page — look for heading text `פגישתך נקבעה בהצלחה` ("your appointment has been successfully booked"). Read back:
+   - Branch name + address
+   - Service
+   - Day, date (DD-MM-YYYY), time (HH:MM)
+   - Masked phone (e.g. `0501****76`)
 
-```bash
-curl -s "https://mypostvouchars-prd.azureedge.net/branches/branches.json" -o /tmp/branches_raw.json
-python3 - <<'PY'
-import json, pathlib
-src = json.load(open("/tmp/branches_raw.json"))
-out = [{
-    "id": b["id"], "branchnumber": b["branchnumber"], "name": b["branchname"],
-    "qnomycode": b.get("qnomycode") or None, "branchtype": b.get("branchtypename"),
-    "city": b.get("city"), "street": b.get("street"), "house": b.get("house"),
-    "zip": b.get("zip"), "telephone": b.get("telephone"),
-    "lat": b.get("geocode_latitude"), "lon": b.get("geocode_longitude"),
-} for b in src["Result"]]
-from datetime import date
-pathlib.Path("skills/israel-post-appointment/data/branches.json").write_text(
-    json.dumps({
-        "source": "https://mypostvouchars-prd.azureedge.net/branches/branches.json",
-        "captured_at": str(date.today()), "count": len(out), "branches": out,
-    }, ensure_ascii=False, indent=2)
-)
-PY
+### Cancel sub-flow
+
+From the confirmation page:
+1. Click `role=button[name="בטל תור"]` on the confirmation card.
+2. An overlay appears: heading `האם ברצונך לבטל את התור?`, buttons `בטל תור` (confirm) / `לא` (abort).
+3. Click the overlay's `בטל תור`.
+4. Success overlay with text `פגישתך בוטלה בהצלחה`. A `חזור` button closes it.
+
+Cross-session cancel by phone lookup is **not** currently supported by this skill — the cancel button only appears on the in-session confirmation page.
+
+## Local preferences (`~/.config/israel-agent-skills/preferences.yaml`)
+
+User values are read from a local, gitignored config — never hardcode in the skill.
+
+```yaml
+israel_post:
+  default_branch_no: 101          # e.g. 101 = מרכזי ירושלים, יפו 23
+  default_service: package_pickup # one of: general | forex | package_pickup | vehicle_transfer
+  default_phone: "05XXXXXXXX"     # treated as a secret
 ```
 
-Commit the refresh with a message like `Refresh Israel Post branches snapshot (YYYY-MM-DD, N branches)`.
+If the config is missing or `default_phone` is absent, the `book` flow must fail with a clear "run the onboard step first" message rather than prompting or defaulting.
 
-## Notes / gotchas
+## Implementation notes
 
-- Israeli IP not strictly required for the CDN endpoint (it's behind Azure CDN, global), but the `doar.israelpost.co.il` site drops a bot-detection challenge to headless browsers. Run Playwright non-headless with `--disable-blink-features=AutomationControlled` and a real UA, per the stealth pattern in `Local-Web-Capture:scrape-web-page`.
-- Hebrew-only fields. Preserve RTL strings verbatim.
-- The `branchtype` `סניף` means a full-service branch (most likely to accept appointments). `סוכנות א/ב/ג` are smaller agencies — some take appointments, most don't. Filter by `qnomycode` presence, not by type.
-- Do not assume a branch's qnomycode is stable forever — it can change. If booking fails with "branch not found in Qnomy", refresh the snapshot.
+- Chromium headless=true with a realistic user-agent and default viewport is sufficient — no stealth plugin needed.
+- For `check-next`: stop after the daypart/slot tabs render. Extract the first day-tab label + first enabled slot button under the first non-empty daypart. Do **not** click anything further — avoids any risk of triggering a booking.
+- For `book`: perform the full flow. Require an explicit user confirmation of the summary (branch, service, day/date/time, phone tail digits) before clicking the final continue button. Verify `פגישתך נקבעה בהצלחה` before reporting success.
+- For `cancel`: run from the confirmation page only. Verify `פגישתך בוטלה בהצלחה` before reporting success.
+- If the Reblaze challenge ever escalates and headless stops working, fall back to a visible Playwright window; do not try to solve the challenge programmatically.
 
-## Out of scope
+## Refreshing `data/branches.json`
 
-- Does not book multi-person appointments.
-- Does not cancel or reschedule existing appointments (separate flow — can be added later).
-- Does not handle non-appointment services like parcel tracking.
+The bundled dataset can go stale (branches added, renumbered, or decommissioned). Refresh is a maintainer task; the upstream source and refresh script are maintained in the skill's development repo, not in this public plugin. If a branch lookup fails or the dataset is older than ~6 months, flag it to the user rather than silently returning stale data.
