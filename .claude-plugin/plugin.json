@@ -1,0 +1,12 @@
+{
+  "name": "israel-agent-skills",
+  "version": "1.0.0",
+  "description": "Claude Code agent skills for Israel and Hebrew-specific workflows: Hebrew translation, Hebrew typography, emergency readiness utilities, and regional lookups.",
+  "author": {
+    "name": "Daniel Rosehill",
+    "url": "https://github.com/danielrosehill"
+  },
+  "repository": "https://github.com/danielrosehill/Israel-Agent-Skills-Plugin",
+  "license": "MIT",
+  "keywords": ["israel", "hebrew", "regional", "sitrep", "typography"]
+}
