@@ -2,7 +2,13 @@
 
 A Claude Code plugin that collects agent skills for Israel and Hebrew-specific workflows.
 
-## Scope
+## Skills
+
+### Jerusalem
+
+- **`jerusalem-municipality-report`** — File a "106" public-contact report with the Jerusalem Municipality. Opens the official form, fills it from user data via Playwright, hands the reCAPTCHA to the user, and submits.
+
+## Planned scope
 
 In scope:
 
