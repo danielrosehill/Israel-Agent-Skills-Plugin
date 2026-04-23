@@ -12,12 +12,13 @@ import re, pathlib, sys
 
 CATEGORY_ORDER = [
     "Government & Civic", "Healthcare", "Emergency Preparedness",
-    "Localization", "Media & Information", "Meta / Tooling", "Other",
+    "Finance", "Localization", "Media & Information", "Meta / Tooling", "Other",
 ]
 INFER_RULES = [
     (r"(^|/)(israel-post|.*-municipality-|.*-government-)", "Government & Civic"),
     (r"(^|/)(maccabi-|clalit-|meuhedet-|leumit-|.*-medicine-|.*-medical-)", "Healthcare"),
     (r"(^|/)(.*-shelter|miklat|home-front|pikud-|.*-alert)", "Emergency Preparedness"),
+    (r"(^|/)(.*-salary-|salary-|.*-currency|-fx-|-tax-|.*-shekel)", "Finance"),
     (r"(^|/)(hebrew-|.*-translation|.*-fonts-)", "Localization"),
     (r"(^|/)(.*-news-|.*-rss-)", "Media & Information"),
     (r"(^|/)(add-skill-|update-plugin-|install-.*-plugin|.*-plugin-)", "Meta / Tooling"),

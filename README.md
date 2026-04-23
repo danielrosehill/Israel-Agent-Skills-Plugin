@@ -25,6 +25,12 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 | **`home-front-command-guidelines`** | Answer questions about Israeli civilian emergency / shelter / protection guidelines issued by Pikud HaOref — rocket/missile behaviour, shelter arrival times, hazardous-materials events, terrorist and drone infiltration, home-protected-space (mamad) preparation, emergency equipment lists, and official alert channels. Always cites the upstream `oref.org.il/eng` source |
 | **`miklatim-lookup`** | Find a public bomb shelter (miklat tziburi, מקלט ציבורי) near a location in Israel — by address, neighbourhood, coordinates, or current position — with address, type, capacity, accessibility, and Google Maps / Waze directions |
 
+### Finance
+
+| Skill | What it does |
+|---|---|
+| **`salary-conversion`** | Convert a salary between Israeli and world conventions — Israeli salaries are stated monthly in shekels (NIS/ILS), world salaries annually in local currency. Uses today's FX rate; rounds the shekel side to the nearest integer |
+
 ### Meta / Tooling
 
 | Skill | What it does |
