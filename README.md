@@ -10,6 +10,7 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 | Skill | What it does |
 |---|---|
 | **`israel-post-appointment`** | Check the next available appointment, book an appointment, or cancel an appointment at an Israel Post branch (דואר ישראל, doar) — e.g. for package pickup (מסירת דואר ללקוח), general counter service (אשנב כל), foreign currency (מטבע חוץ), or vehicle ownership transfer (העברת בעלות רכב) |
+| **`jerusalem-council-meetings`** | Browse the Jerusalem City Council committee meetings archive (ישיבות ועדות מועצת העיר), open a specific meeting's agenda by term+GUID, and download the protocol PDF (פרוטוקול) — drives a real browser because the site is behind Akamai |
 | **`jerusalem-municipality-report`** | File a "106" public-contact report with the Jerusalem Municipality (עיריית ירושלים, pniya la-106) |
 | **`kol-zchut-lookup`** | Search Kol Zchut (כל זכות) — Israel's plain-language citizen rights portal — for answers on employment, consumer, tenancy, healthcare, and social-security rights. Uses the site's MediaWiki API headlessly and returns the top article titles, URLs, and snippets |
 
