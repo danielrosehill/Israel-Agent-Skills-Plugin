@@ -32,6 +32,12 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 |---|---|
 | **`salary-conversion`** | Convert a salary between Israeli and world conventions — Israeli salaries are stated **monthly in shekels (NIS / ILS)**, while most other countries state salaries **annually in their local currency** (USD, EUR, GBP, etc.) |
 
+### Media & Information
+
+| Skill | What it does |
+|---|---|
+| **`israel-news-rss`** | Use when the user wants the latest Israeli news headlines from major outlets via RSS, in English or Hebrew |
+
 ### Meta / Tooling
 
 | Skill | What it does |
@@ -48,8 +54,6 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 | **`ben-gurion-flight-board`** | Check live arrivals or departures at Ben Gurion Airport (Tel Aviv, TLV, LLBG) from the official Israel Airports Authority flight board |
 | **`jerusalem-council-meetings`** | Browse, list, or download protocols (meeting minutes) from Jerusalem Municipality council committee sittings (ישיבות ועדות מועצת העיר ירושלים) |
 
-<!-- SKILLS:END -->
-` markers |
 <!-- SKILLS:END -->
 
 ## Installation
