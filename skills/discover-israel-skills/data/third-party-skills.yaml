@@ -1,0 +1,176 @@
+# Curated third-party Claude Code agent skills for Israel.
+# Source of truth for the `discover-israel-skills` skill.
+# Add entries only after verifying the upstream has a SKILL.md.
+
+awesome_list:
+  url: https://github.com/alexpolonsky/awesome-agent-skills-israel
+  blurb: >-
+    Human-readable "awesome list" of Israel-focused agent skills. Browse here
+    for entries beyond this curated shortlist.
+
+skills:
+  # ---- Tax & Finance ----
+  - install_name: boi-economic-data
+    category: Tax & Finance
+    owner: skills-il
+    repo: tax-and-finance
+    subpath: boi-economic-data
+    blurb: Bank of Israel economic data — interest rates, CPI (madad), exchange rates.
+    upstream_url: https://github.com/skills-il/tax-and-finance/tree/main/boi-economic-data
+
+  - install_name: cardcom-payment-gateway
+    category: Tax & Finance
+    owner: skills-il
+    repo: tax-and-finance
+    subpath: cardcom-payment-gateway
+    blurb: Cardcom payment processing + Israeli invoice generation (Low Profile, tokenised payments).
+    upstream_url: https://github.com/skills-il/tax-and-finance/tree/main/cardcom-payment-gateway
+
+  - install_name: green-invoice-tax
+    category: Tax & Finance
+    owner: skills-il
+    repo: tax-and-finance
+    subpath: green-invoice
+    blurb: Green Invoice (Morning) API — invoices, receipts, clients, payments. (skills-il edition)
+    upstream_url: https://github.com/skills-il/tax-and-finance/tree/main/green-invoice
+
+  - install_name: morning-skill
+    category: Tax & Finance
+    owner: D1DX
+    repo: morning-skill
+    blurb: Morning (Green Invoice) expense management, presigned S3 upload, classifications, search.
+    upstream_url: https://github.com/D1DX/morning-skill
+
+  # ---- Accounting ----
+  - install_name: gws-israeli-business-sheets
+    category: Accounting
+    owner: skills-il
+    repo: accounting
+    subpath: gws-israeli-business-sheets
+    blurb: Google Sheets financial tracking for Israeli freelancers / small businesses via gws CLI.
+    upstream_url: https://github.com/skills-il/accounting/tree/main/gws-israeli-business-sheets
+
+  - install_name: hashavshevet-data-tools
+    category: Accounting
+    owner: skills-il
+    repo: accounting
+    subpath: hashavshevet-data-tools
+    blurb: Import/export between Hashavshevet accounting software and JSON / CSV / Excel.
+    upstream_url: https://github.com/skills-il/accounting/tree/main/hashavshevet-data-tools
+
+  # ---- Government ----
+  - install_name: israel-gov-api
+    category: Government
+    owner: skills-il
+    repo: government-services
+    subpath: israel-gov-api
+    blurb: Query Israeli government open data (data.gov.il CKAN API).
+    upstream_url: https://github.com/skills-il/government-services/tree/main/israel-gov-api
+
+  - install_name: israeli-address-autocomplete
+    category: Government
+    owner: skills-il
+    repo: government-services
+    subpath: israeli-address-autocomplete
+    blurb: Format, validate, and geocode Israeli addresses; postal code (mikud) + CBS city code lookup.
+    upstream_url: https://github.com/skills-il/government-services/tree/main/israeli-address-autocomplete
+
+  - install_name: aliyah-customs-shipment-planner
+    category: Government
+    owner: skills-il
+    repo: government-services
+    subpath: israeli-aliyah-customs-shipment-planner
+    blurb: Plan the 3-shipment customs exemption for new olim (zchuyot olim).
+    upstream_url: https://github.com/skills-il/government-services/tree/main/israeli-aliyah-customs-shipment-planner
+
+  # ---- Healthcare ----
+  - install_name: clalit-pharm-search
+    category: Healthcare
+    owner: tomron
+    repo: agent-skill-clalit-pharm-search
+    blurb: Search medications and check real-time stock at Clalit (כללית) pharmacies.
+    upstream_url: https://github.com/tomron/agent-skill-clalit-pharm-search
+
+  - install_name: maccabi-pharm-search
+    category: Healthcare
+    owner: alexpolonsky
+    repo: agent-skill-maccabi-pharm-search
+    blurb: Check prescription medication stock at Maccabi pharmacies (search nearby branches).
+    upstream_url: https://github.com/alexpolonsky/agent-skill-maccabi-pharm-search
+
+  # ---- Transport ----
+  - install_name: railil
+    category: Transport
+    owner: lirantal
+    repo: skill-railil
+    blurb: Israel Railways API — timetables, station info, trip planning.
+    upstream_url: https://github.com/lirantal/skill-railil
+
+  # ---- Post & Logistics ----
+  - install_name: israel-post-tracking
+    category: Post & Logistics
+    owner: WolfikOz
+    repo: israel-post-tracking
+    blurb: Track Israel Post (דואר ישראל) packages, optional WhatsApp status notifications.
+    upstream_url: https://github.com/WolfikOz/israel-post-tracking
+
+  # ---- Media & Entertainment ----
+  - install_name: seret
+    category: Media & Entertainment
+    owner: omernesh
+    repo: seret-skill
+    blurb: Israeli movie showtimes, ratings, and cinema info from seret.co.il.
+    upstream_url: https://github.com/omernesh/seret-skill
+
+  # ---- Legal & Compliance ----
+  - install_name: hebrew-legal-research
+    category: Legal & Compliance
+    owner: skills-il
+    repo: security-compliance
+    subpath: hebrew-legal-research
+    blurb: Israeli legal research — legislation lookup, case law, Hebrew legal terminology.
+    upstream_url: https://github.com/skills-il/security-compliance/tree/main/hebrew-legal-research
+
+  - install_name: israeli-ai-compliance-kit
+    category: Legal & Compliance
+    owner: skills-il
+    repo: security-compliance
+    subpath: israeli-ai-compliance-kit
+    blurb: Israeli AI governance/compliance (Ministry of Innovation policy, PPA, sector guidance).
+    upstream_url: https://github.com/skills-il/security-compliance/tree/main/israeli-ai-compliance-kit
+
+  - install_name: israeli-appsec-scanner
+    category: Legal & Compliance
+    owner: skills-il
+    repo: security-compliance
+    subpath: israeli-appsec-scanner
+    blurb: Security scanning guidance for Israeli web apps — OWASP Top 10 + Israeli PPA requirements.
+    upstream_url: https://github.com/skills-il/security-compliance/tree/main/israeli-appsec-scanner
+
+  # ---- Communication ----
+  - install_name: gws-hebrew-email-automation
+    category: Communication
+    owner: skills-il
+    repo: communication
+    subpath: gws-hebrew-email-automation
+    blurb: Gmail automation for Israeli freelancers — drafting Hebrew client emails via gws CLI.
+    upstream_url: https://github.com/skills-il/communication/tree/main/gws-hebrew-email-automation
+
+  - install_name: israeli-customer-support-automator
+    category: Communication
+    owner: skills-il
+    repo: communication
+    subpath: israeli-customer-support-automator
+    blurb: Automate Israeli customer support — Hebrew ticket categorisation + response management.
+    upstream_url: https://github.com/skills-il/communication/tree/main/israeli-customer-support-automator
+
+  - install_name: israeli-cv-builder
+    category: Communication
+    owner: skills-il
+    repo: communication
+    subpath: israeli-cv-builder
+    blurb: Generate an Israeli CV (קורות חיים) in Hebrew, English, or both.
+    upstream_url: https://github.com/skills-il/communication/tree/main/israeli-cv-builder
+
+# Intentionally excluded (not Claude Code skills):
+#   - shneorAziza/MyLaw — full application (backend + frontend), not a skill.
