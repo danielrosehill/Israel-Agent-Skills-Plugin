@@ -2,29 +2,32 @@
 
 A Claude Code plugin that collects agent skills for Israel and Hebrew-specific workflows.
 
+<!-- SKILLS:START -->
 ## Skills
 
-### Jerusalem
+### Government & Civic
 
-- **`jerusalem-municipality-report`** — File a "106" public-contact report with the Jerusalem Municipality. Opens the official form, fills it from user data via Playwright, hands the reCAPTCHA to the user, and submits.
+| Skill | What it does |
+|---|---|
+| **`israel-post-appointment`** | Check the next available appointment, book an appointment, or cancel an appointment at an Israel Post branch (דואר ישראל, doar) — e.g. for package pickup (מסירת דואר ללקוח), general counter service (אשנב כל), foreign currency (מטבע חוץ), or vehicle ownership transfer (העברת בעלות רכב) |
+| **`jerusalem-municipality-report`** | File a "106" public-contact report with the Jerusalem Municipality (עיריית ירושלים, pniya la-106) |
 
-## Planned scope
+### Healthcare
 
-In scope:
+| Skill | What it does |
+|---|---|
+| **`maccabi-medicine-lookup`** | Check whether a medicine is available through Maccabi Healthcare Services (מכבי שירותי בריאות) — whether it is listed, prescription-only (מרשם), included in the health basket (סל הבריאות), its out-of-pocket price, and any patient information leaflet |
 
-- **Israel news RSS adder** — append vetted Israeli news feeds to an RSS reader export
-- **Israel first aid adder** — inject localised first aid / emergency reference content
-- **English ↔ Hebrew translation** — bidirectional translation tuned for technical and civic language
-- **Hebrew tech vocab updater** — maintain a glossary of Hebrew technical terminology
-- **Google Fonts Hebrew downloader** — fetch Hebrew-supporting Google Fonts in bulk
-- **Nice Hebrew fonts downloader** — curated non-Google Hebrew typeface pulls
-- **Miklat lookup** — query the user's Miklat (bomb shelter) dataset
+### Meta / Tooling
 
-More skills will be added over time.
+| Skill | What it does |
+|---|---|
+| **`add-skill-to-plugin`** | Add a new skill to this plugin from rough / raw notes pasted into chat — scaffolds `skills/<name>/SKILL.md`, syncs the local plugin cache, commits, and pushes |
+<!-- SKILLS:END -->
 
-## Out of scope
+## Related plugins
 
-**Israel shopping skills are NOT part of this plugin.** They are provided by the separate standalone plugin [`Claude-Israel-Shopping-Plugin`](https://github.com/danielrosehill/Claude-Israel-Shopping-Plugin). Please install that plugin for any shopping, vendor, or price-comparison workflows targeting Israeli retailers.
+Shopping workflows for Israeli residents are provided separately by [`Claude-Israel-Shopping-Plugin`](https://github.com/danielrosehill/Claude-Israel-Shopping-Plugin) — install that plugin for any shopping, vendor, or price-comparison skills.
 
 ## Installation
 
