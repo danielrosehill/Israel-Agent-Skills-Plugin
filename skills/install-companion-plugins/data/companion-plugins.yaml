@@ -1,0 +1,25 @@
+# Companion plugins that complement Israel-Agent-Skills.
+# Each entry names the owner/repo, the plugin slug (from .claude-plugin/plugin.json),
+# the marketplace to add if it isn't already registered, and a short user-facing blurb.
+
+marketplace: danielrosehill/Claude-Code-Plugins
+
+plugins:
+  - slug: israel-shopping
+    owner: danielrosehill
+    repo: Claude-Israel-Shopping-Plugin
+    topic: Shopping (Israel)
+    blurb: >-
+      Israeli shopping workflows — tech retailers (Ivory, KSP, Bug, TMS),
+      Zap price comparison, Hebrew term resolution, ILS conversion, RRP
+      checks, part-number cross-reference, and brand identification.
+
+  - slug: greeninvoice-ops
+    owner: danielrosehill
+    repo: Claude-Green-Invoice-Ops-Plugin
+    topic: Invoicing (Green Invoice)
+    blurb: >-
+      Operational commands and a skill for working with the Green Invoice
+      MCP — invoices, clients, expenses, and monthly summaries. Useful if
+      you're a self-employed Israeli resident using Green Invoice as your
+      accounting platform.

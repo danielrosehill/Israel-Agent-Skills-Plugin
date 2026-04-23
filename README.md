@@ -18,11 +18,18 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 |---|---|
 | **`maccabi-medicine-lookup`** | Check whether a medicine is available through Maccabi Healthcare Services (מכבי שירותי בריאות) — whether it is listed, prescription-only (מרשם), included in the health basket (סל הבריאות), its out-of-pocket price, and any patient information leaflet |
 
+### Emergency Preparedness
+
+| Skill | What it does |
+|---|---|
+| **`home-front-command-guidelines`** | Answer questions about Israeli civilian emergency / shelter / protection guidelines issued by Pikud HaOref (Home Front Command, פיקוד העורף) — rocket/missile behaviour, shelter arrival times, hazardous-materials events, terrorist and drone infiltration, home-protected-space (mamad) preparation, emergency equipment lists, and official alert channels. Always cites the upstream `oref.org.il/eng` source |
+
 ### Meta / Tooling
 
 | Skill | What it does |
 |---|---|
 | **`add-skill-to-plugin`** | Add a new skill to this plugin from rough / raw notes pasted into chat — scaffolds `skills/<name>/SKILL.md`, syncs the local plugin cache, commits, and pushes |
+| **`install-companion-plugins`** | Install or review other Claude Code plugins that complement this plugin — currently `israel-shopping` (Israeli e-commerce) and `greeninvoice-ops` (Green Invoice operations). Runs the marketplace + install commands with explicit confirmation |
 | **`update-plugin-readme`** | Refresh the README's Skills section from the current `skills/*/SKILL.md` inventory — reads each skill's frontmatter, groups by category, and rewrites the table between `<!-- SKILLS:START -->` / `<!-- SKILLS:END -->` markers |
 <!-- SKILLS:END -->
 

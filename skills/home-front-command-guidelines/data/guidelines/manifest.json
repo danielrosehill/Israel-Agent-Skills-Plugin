@@ -1,0 +1,260 @@
+{
+  "name": "Pikud HaOref (Home Front Command) Guidelines",
+  "description": "English-language emergency preparedness and shelter guidelines extracted from the Israeli Home Front Command (Pikud HaOref) National Emergency Portal",
+  "source": "https://www.oref.org.il/eng",
+  "extraction_date": "2026-03-20",
+  "language": "en",
+  "total_files": 22,
+  "total_words": 31107,
+  "disclaimer": "This content is extracted from the official Home Front Command website for informational and AI ingestion purposes only. It may not reflect the most current guidelines. Always consult https://www.oref.org.il for the latest official information. This repository is not affiliated with or endorsed by Pikud HaOref or the Israel Defense Forces.",
+  "intended_use": "Ground truth corpus for AI agents providing emergency preparedness and shelter guidance in Israel. Optimized for vector database ingestion and RAG pipelines.",
+  "files": [
+    {
+      "filename": "guidelines/defensive-policy/defensive-guidelines-1.md",
+      "title": "Defensive Guidelines",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/defensive-guidelines-faq",
+      "archived_date": "Fri Mar 20 2026 15:54:08 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "defensive-guidelines"
+      ],
+      "word_count": 1212,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/defensive-policy/defensive-guidelines-2.md",
+      "title": "Defensive Guidelines",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/defensive-guidelines-faq",
+      "archived_date": "Fri Mar 20 2026 15:54:17 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "defensive-guidelines"
+      ],
+      "word_count": 1733,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/alerts-and-communication/do-not-share-info.md",
+      "title": "Do not Share Information Online",
+      "source_url": "https://www.oref.org.il/eng/articles/info/emergency-management/1309",
+      "archived_date": "Fri Mar 20 2026 15:52:57 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "information-security"
+      ],
+      "word_count": 1542,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/alerts-and-communication/emergency-communication.md",
+      "title": "Emergency Communication Methods",
+      "source_url": "https://www.oref.org.il/eng/articles/emergency-preparedness/preparing-routine/1211",
+      "archived_date": "Fri Mar 20 2026 15:53:13 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "alerts-and-communication"
+      ],
+      "word_count": 950,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/emergency-preparedness/emergency-equipment.md",
+      "title": "Preparing for emergencies with all the required equipment",
+      "source_url": "https://www.oref.org.il/eng/articles/info/preparing-protected-space/1201",
+      "archived_date": "Fri Mar 20 2026 15:52:02 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "emergency-equipment"
+      ],
+      "word_count": 1605,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/emergency-preparedness/family-emergency-plan.md",
+      "title": "Family Emergency Plan",
+      "source_url": "https://www.oref.org.il/eng/articles/emergency-preparedness/preparing-routine/2102",
+      "archived_date": "Fri Mar 20 2026 15:52:15 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "emergency-preparedness"
+      ],
+      "word_count": 2273,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/faq/faq-emergency-preparedness-1.md",
+      "title": "Questions and Answers - Emergency Preparedness",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/emergency-coping-faq",
+      "archived_date": "Fri Mar 20 2026 15:55:11 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "faq"
+      ],
+      "word_count": 1156,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/faq/faq-emergency-preparedness-2.md",
+      "title": "Questions and Answers - Emergency Preparedness",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/emergency-coping-faq",
+      "archived_date": "Fri Mar 20 2026 15:55:17 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "faq"
+      ],
+      "word_count": 314,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/faq/faq-general.md",
+      "title": "Frequently Asked Questions",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/faq",
+      "archived_date": "Fri Mar 20 2026 15:53:25 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "faq"
+      ],
+      "word_count": 1861,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/faq/faq-hazardous-materials.md",
+      "title": "Questions and Answers- Hazardous Materials",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/hazardous-materials-faq",
+      "archived_date": "Fri Mar 20 2026 15:55:58 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "faq",
+        "hazardous-materials"
+      ],
+      "word_count": 1191,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/faq/faq-rocket-missile-1.md",
+      "title": "Questions and Answers - Rocket and Missile Attack",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/rockets-missles-faq",
+      "archived_date": "Fri Mar 20 2026 15:53:51 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "faq",
+        "rocket-and-missile-threats"
+      ],
+      "word_count": 644,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/faq/faq-rocket-missile-2.md",
+      "title": "Questions and Answers - Rocket and Missile Attack",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/rockets-missles-faq",
+      "archived_date": "Fri Mar 20 2026 15:53:38 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "faq",
+        "rocket-and-missile-threats"
+      ],
+      "word_count": 1810,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/security-threats/hostile-aerial-vehicle-infiltration.md",
+      "title": "Infiltration of Hostile Aerial Vehicle Alert",
+      "source_url": "https://www.oref.org.il/eng/life-saving-guidelines/hostile-aerial-vehicle-infiltration",
+      "archived_date": "Thu Mar 20 2026 15:54:08 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "rocket-and-missile-threats",
+        "security-threats"
+      ],
+      "word_count": 1123,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/shelter-and-home/preparing-home.md",
+      "title": "Preparing the Home for Emergencies",
+      "source_url": "https://www.oref.org.il/eng/articles/emergency-preparedness/preparing-routine/2104",
+      "archived_date": "Fri Mar 20 2026 15:52:32 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "shelter-and-home-preparation"
+      ],
+      "word_count": 1272,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/shelter-and-home/protected-space-1.md",
+      "title": "Protected Space",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/protected-space-faq",
+      "archived_date": "Fri Mar 20 2026 15:54:38 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "shelter-and-home-preparation"
+      ],
+      "word_count": 2860,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/shelter-and-home/protected-space-2.md",
+      "title": "Protected Space",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/protected-space-faq",
+      "archived_date": "Fri Mar 20 2026 15:54:30 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "shelter-and-home-preparation"
+      ],
+      "word_count": 1267,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/alerts-and-communication/receiving-alerts-1.md",
+      "title": "Receiving Alerts",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/receiving-alerts-faq",
+      "archived_date": "Fri Mar 20 2026 15:54:58 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "alerts-and-communication"
+      ],
+      "word_count": 1862,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/alerts-and-communication/receiving-alerts-2.md",
+      "title": "Receiving Alerts",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/receiving-alerts-faq",
+      "archived_date": "Fri Mar 20 2026 15:54:51 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "alerts-and-communication"
+      ],
+      "word_count": 1486,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/security-threats/security-threats.md",
+      "title": "Security Threats",
+      "source_url": "https://www.oref.org.il/eng/questions-answers/security-threats-faq",
+      "archived_date": "Fri Mar 20 2026 15:56:16 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "security-threats"
+      ],
+      "word_count": 764,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/security-threats/terrorist-infiltration.md",
+      "title": "Terrorist Infiltration — Life-Saving Guidelines",
+      "source_url": "https://www.oref.org.il/eng/life-saving-guidelines/terrorist-infiltration",
+      "archived_date": "Thu Mar 20 2026 15:54:08 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "security-threats"
+      ],
+      "word_count": 334,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/emergency-preparedness/who-to-contact.md",
+      "title": "Who to Contact During an Emergency",
+      "source_url": "https://www.oref.org.il/eng/articles/emergency-preparedness/preparing-routine/2105",
+      "archived_date": "Fri Mar 20 2026 15:52:43 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "emergency-contacts"
+      ],
+      "word_count": 1108,
+      "import_date": "2026-03-20"
+    },
+    {
+      "filename": "guidelines/emergency-preparedness/why-prepare.md",
+      "title": "Why is it Important to Prepare for Emergency Situations?",
+      "source_url": "https://www.oref.org.il/eng/articles/emergency-preparedness/preparing-routine/2100",
+      "archived_date": "Thu Mar 12 2026 19:05:43 GMT+0200 (Israel Standard Time)",
+      "categories": [
+        "emergency-preparedness"
+      ],
+      "word_count": 2740,
+      "import_date": "2026-03-20"
+    }
+  ],
+  "base_path": "guidelines/"
+}

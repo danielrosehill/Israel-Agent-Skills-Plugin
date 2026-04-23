@@ -45,7 +45,7 @@ def infer(slug, fm):
 
 def clean(d):
     if not d: return ""
-    d = re.sub(r"^Use when (the user|Daniel) wants to ", "", d, flags=re.I)
+    d = re.sub(r"^Use when (the user|Daniel) (wants to|asks about|needs to|is asking about)\s+", "", d, flags=re.I)
     d = re.split(r"\s*Trigger phrases?\s*[:\-]", d, maxsplit=1)[0]
     parts = re.split(r"(?<=[.!?])\s+(?=[A-Z])", d.strip(), maxsplit=1)
     s = parts[0].strip().rstrip(".")
