@@ -84,7 +84,7 @@ skills/
 
 This plugin's skills frequently interact with Israeli government / health / municipal / commercial websites that have authentication, autocomplete, reCAPTCHA, RTL quirks, and assorted anti-bot friction. Knowledge of how to negotiate those surfaces is genuinely dual-use — useful for the ordinary white-hat user, useful for abuse at scale.
 
-Follow the [Ethical Skill Development](https://github.com/danielrosehill/Ethical-Skill-Development) code of practice when authoring a new skill in this plugin:
+Follow the [Responsible Skill Development](https://github.com/danielrosehill/Responsible-Skill-Development) code of practice when authoring a new skill in this plugin:
 
 1. **Decouple dev artefacts from the published SKILL.md.** Captured payloads, full HAR files, detailed maps of auth/CAPTCHA challenges, fingerprint observations, and probing scripts belong in the **private dev workspace** (`Israel-Agent-Skills-Dev` — `~/repos/github/my-repos/Israel-Agent-Skills-Dev/`). The published `SKILL.md` in this plugin should contain only what's needed at runtime.
 2. **Sanitise the published SKILL.md.** Skills can't hide what they do at runtime, but the SKILL.md does not need to narrate the target site's defensive posture. Specifically:
