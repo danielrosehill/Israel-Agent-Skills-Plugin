@@ -53,6 +53,7 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 |---|---|
 | **`ben-gurion-flight-board`** | Check live arrivals or departures at Ben Gurion Airport (Tel Aviv, TLV, LLBG) from the official Israel Airports Authority flight board |
 | **`fiber-availability-check`** | Check whether fiber-optic internet is deployed at an Israeli street address, across multiple providers (Bezeq Bfiber and HOT Fiber today) |
+| **`israel-conferences`** | Find upcoming conferences, professional events, summits, expos, or industry meetups in Israel — checks a curated whitelist of Israeli event aggregators (events.co.il, conferenceindex.org, IVC, ICX, dev.events) before falling back to general web search |
 | **`jerusalem-council-meetings`** | Browse, list, or download protocols (meeting minutes) from Jerusalem Municipality council committee sittings (ישיבות ועדות מועצת העיר ירושלים) |
 
 <!-- SKILLS:END -->

@@ -80,6 +80,22 @@ skills/
 - Bump the plugin version in `.claude-plugin/plugin.json` if Daniel says this is a release-worthy addition.
 - Add the new skill to README.md if the README maintains a skill index (check before editing).
 
+## Ethical skill development (apply when authoring the SKILL.md)
+
+This plugin's skills frequently interact with Israeli government / health / municipal / commercial websites that have authentication, autocomplete, reCAPTCHA, RTL quirks, and assorted anti-bot friction. Knowledge of how to negotiate those surfaces is genuinely dual-use — useful for the ordinary white-hat user, useful for abuse at scale.
+
+Follow the [Ethical Skill Development](https://github.com/danielrosehill/Ethical-Skill-Development) code of practice when authoring a new skill in this plugin:
+
+1. **Decouple dev artefacts from the published SKILL.md.** Captured payloads, full HAR files, detailed maps of auth/CAPTCHA challenges, fingerprint observations, and probing scripts belong in the **private dev workspace** (`Israel-Agent-Skills-Dev` — `~/repos/github/my-repos/Israel-Agent-Skills-Dev/`). The published `SKILL.md` in this plugin should contain only what's needed at runtime.
+2. **Sanitise the published SKILL.md.** Skills can't hide what they do at runtime, but the SKILL.md does not need to narrate the target site's defensive posture. Specifically:
+   - Describe **outcomes** (what the user gets), not bypasses.
+   - Don't enumerate which header/cookie/timing the site checks, or precisely how the skill negotiates with each defensive surface.
+   - Don't ship development comments like "the site rejects requests without X within 200ms of Y" — those stay in the dev workspace.
+   - Hebrew label tables, output schema, and UI quirks the *user* needs to know about are fine; tutorial-grade write-ups of anti-bot internals are not.
+3. **Be willing not to publish.** Some skills, on reflection, should stay in the dev workspace only. If publishing materially advantages bad actors, leave it private.
+
+Apply this judgement when transforming the raw notes in step 1 of the Procedure. If notes contain detailed anti-bot or auth-defence observations, route those to the dev workspace and write a sanitised version into the published `SKILL.md`.
+
 ## Out of scope
 
 - Does not implement the skill's runtime logic — only authors the SKILL.md. The skill itself is executed by Claude at invocation time using whatever tools it declares (Playwright, WebFetch, etc.).
