@@ -80,7 +80,7 @@ skills/
 - Bump the plugin version in `.claude-plugin/plugin.json` if Daniel says this is a release-worthy addition.
 - Add the new skill to README.md if the README maintains a skill index (check before editing).
 
-## Ethical skill development (apply when authoring the SKILL.md)
+## Responsible skill development (apply when authoring the SKILL.md)
 
 This plugin's skills frequently interact with Israeli government / health / municipal / commercial websites that have authentication, autocomplete, reCAPTCHA, RTL quirks, and assorted anti-bot friction. Knowledge of how to negotiate those surfaces is genuinely dual-use — useful for the ordinary white-hat user, useful for abuse at scale.
 
