@@ -1,6 +1,6 @@
 {
   "name": "israel-agent-skills",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Claude Code agent skills for Israel and Hebrew-specific workflows: Hebrew translation, Hebrew typography, emergency readiness utilities, and regional lookups.",
   "author": {
     "name": "Daniel Rosehill",
