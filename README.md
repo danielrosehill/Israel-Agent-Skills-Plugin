@@ -18,6 +18,9 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 | Skill | What it does |
 |---|---|
 | **`maccabi-medicine-lookup`** | Check whether a medicine is available through Maccabi Healthcare Services (מכבי שירותי בריאות) — whether it is listed, whether it is prescription-only (POM, מרשם), whether it is included in the health basket / sal briut (סל הבריאות, subsidised), its out-of-pocket price to the patient, and a link to the patient information leaflet (עלון לצרכן) if one is published |
+| **`drug-co-il-lookup`** | Look up an Israeli medication on drug.co.il (the Pharmacists Organization's public drug-info site) — Hebrew + English name, manufacturer, active ingredient, ATC, dosage form, prescription/OTC status, health-basket inclusion, approved indication, equivalent generics, and links to MOH-hosted patient leaflets in Hebrew/English/Arabic |
+| **`israel-drugs-registry-lookup`** | Look up a medicine in the official Israeli Drug Registry (israeldrugs.health.gov.il, MOH מאגר התרופות) — registration number (דרגיסטר), licence holder, manufacturer(s), ATC code, full approved indication text, registration status (active / cancelled / suspended), basket inclusion record, and the official patient and physician leaflets |
+| **`medicine-availability-check`** | Orchestrator for "is X available to me in Israel" questions — chains the health-fund, pharma, and regulatory lookups in the right order, climbing only as far as the question requires |
 
 ### Emergency Preparedness
 
@@ -42,6 +45,7 @@ A Claude Code plugin that collects agent skills for Israel and Hebrew-specific w
 
 | Skill | What it does |
 |---|---|
+| **`list-skills`** | Categorised map of every skill in this plugin, grouped by area (Healthcare & Medication, Emergency, Travel, Government, Finance, Media, Connectivity, Meta) — read this first to find the right entry point without scanning every SKILL.md |
 | **`add-skill-to-plugin`** | Add a new skill to the Israel-Agent-Skills-Plugin repo based on rough / raw notes he pastes into the chat |
 | **`discover-israel-skills`** | Browse, discover, or install third-party Claude Code agent skills focused on Israel (tax/accounting, government services, healthcare pharmacies, rail, cinema, post tracking, legal research, security compliance, communication, etc.) — skills authored by people other than Daniel, indexed here for easy installation alongside this plugin |
 | **`install-companion-plugins`** | Install or review other Claude Code plugins that complement this Israel-Agent-Skills plugin |
